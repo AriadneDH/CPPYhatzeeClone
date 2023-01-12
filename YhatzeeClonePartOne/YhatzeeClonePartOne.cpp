@@ -5,10 +5,17 @@
 
 
 #include <iostream>
+#include <iomanip>
+#include <fstream>
+
+#include <time.h>
+#include <vector>
+#include <cstdlib>
+using namespace std;
 /* Dice object is contained within the turn object
 *  keeps track of the dice values, calls roll.
-*  Array int [5] diceValues = dice values rolls once on initiation
-*  Array boolean [5] diceKeep = true false if a die will be keept next roll default all false
+*  array int [5] diceValues = dice values rolls once on initiation
+*  array boolean [5] diceKeep = true false if a die will be keept next roll default all false
 *  int rollCount = number of rolls used this turn
 * 
 *  getters for all var
@@ -16,23 +23,89 @@
 */
 class dice
 {
+    private:
+        int dice_values[5];
+        //more efficient than declairing length then looping for define
+        bool dice_keep[5] = { false, false, false, false, false };
+        int roll_count;
 
+        /* Dice rolling method, generates an array of psudo-random numbers
+         *  in all false spots on the passed bool array. used by dice object instances
+         *  --return Array int pointer dice values = the new generated values
+         *  --Array bool[5] kept_dice = true values in this array refrence which dice arent rolled
+         *  to be more clean, multiple calls, simply returns random num.
+         *  return int the new random val,
+         *  moved to the dice object
+         */
+        void rollDice()
+        {
+            srand(time(NULL));
+            for (int i = 0; i < 5; i++)
+            {
+                if (dice_keep[i])
+                {
+                    //more efficient placement instead of another loop
+                    dice_keep[i] = false;
+                    continue;
+                }
+                dice_values[i] = (rand() % 6) + 1;
+            }
+            
+        }
+
+    public:
+        //only constructor, does one roll
+        dice()
+        {
+            roll_count = 0;
+            rollDice();
+        }
+        //pass index of the die to keep or not, 0-4 only, false signals invalid input
+        bool keepDie(int die_index)
+        {
+            if (0 <= die_index && die_index <= 4)
+            {
+                if (dice_keep[die_index])
+                {
+                    dice_keep[die_index] = false;
+                }
+                else
+                {
+                    dice_keep[die_index] = true;
+                }
+                return true;
+            }
+            return false;
+        }
+        //tries roll, returns false if no rolls left
+        bool tryRoll()
+        {
+            if (roll_count < 2)
+            {
+                rollDice();
+                roll_count++;
+                return true;
+            }
+            return false;
+        }
+        //getters
+        vector<bool> getDiceKeep()
+        {
+            return { this->dice_keep[0], this->dice_keep[1], this->dice_keep[2], this->dice_keep[3], this->dice_keep[4] };
+        }
+        vector<int> getDiceVal()
+        {
+            return { this->dice_values[0], this->dice_values[1], this->dice_values[2], this->dice_values[3], this->dice_values[4] };
+        }
+        int getRollCount()
+        {
+            return this->roll_count;
+        }
+        
 };
 
-/* Stores the data for current turn, contains the dice object
-*  refrences the score object to play or zero a score box
-*  turn ends and is terminated when a play is made or a zero is placed
-*  
-*  object Dice = the dice object for the current turn
-*  ---object Score = the passed reffrence to the score object for the game state
-*  
-*  getters for the data points
-*  terminate method
-*/
-class turn
-{
 
-};
+
 
 /* Contains all of the score category values, a boolean if they are played
 *  and the score value once played, is called to update and refrence score data.
@@ -45,42 +118,16 @@ class turn
 *  zero (category) = attempts to zero a category, checks if allready filled calls update score
 *  end_game = if all 13 boxes checked, calculates bonuses and calls update score
 *  getters for all peices
-*/
+*
 class score
 {
 
 };
-
-/* Contains the turn object and score object, refrences the print screen function. 
-*  created by the run game fucntion. interfaces between score and turn initiates and terminates 
-*  turns.
-* 
-*   object current_turn = the turn object, contained here for data control
-*   object game_score = the score object, contained here for data control 
-*   
-*   getters and setters, used to refrence the game display
-*   check game end = if end game returns a true goes throug the game end process
 */
-class gameState
-{
 
-};
-
-/* Dice rolling method, generates an array of psudo-random numbers
-*  in all false spots on the passed bool array. used by dice object instances 
-* 
-*  return Array int[5} dice values = the new generated values 
-*  
-*  Array bool[5] kept_dice = true values in this array refrence which dice arent rolled
-* 
-*/
-private int[5] roll_dice(bool[5] diceKept)
-{
-
-}
 
 /* Runs the game, ends a session, ends the application, can generate a new
-*  game instance. passes diffrent ints to main for close based on diffrent end cases
+*  game instance. passes different ints to main for close based on different end cases
 *  also interprates and controlls user input to call appropriate methods, meat and potatos of calls.
 * 
 *  0 regular end
@@ -92,29 +139,39 @@ private int[5] roll_dice(bool[5] diceKept)
 *  end_game = ends the current game instance
 *  quit_app = closes the application
 */
-private int run_yhatzee()
+int runYhatzee()
 {
-
+   /* dice my_dice = dice();
+    bool var1 = my_dice.tryRoll();
+    bool var2 = my_dice.keepDie(1);
+    bool var3 = my_dice.keepDie(2);
+    bool var4 = my_dice.tryRoll();
+    bool var5 = my_dice.keepDie(6);
+    vector<bool> die_keep = my_dice.getDiceKeep();
+    vector<int> die_val = my_dice.getDiceVal();*/
+    return 1;
 }
 /* cleans and writes to screen to function as a game interface
 *  todo specs for this fun, later priority
+*
+private -- screenPrint(-different peices of data to pass for screen printing-)
 */
-private -- screenPrint(-diffrent peices of data to pass for screen printing-)
 /* More dummed down print metod for in-development testing
 *  todo, specs of method
-*/
-private int testPrint(-associated data, and diffrent print cases for use in testing - )
+*
+int testPrint(-associated data, and different print cases for use in testing - )
 {
 
 }
-
+*/
 /* Main method, initiates game run
 *  prints difrent return values based on
 *  how game ended
 */
 int main()
 {
-    std::cout << "Hello World!\n";
+    int returnVal = runYhatzee();
+    return returnVal;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
