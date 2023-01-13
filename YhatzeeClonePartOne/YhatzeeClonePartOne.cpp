@@ -104,7 +104,20 @@ class dice
         
 };
 
+/* Contains the turn object and score object, refrences the print screen function.
+*  created by the run game fucntion. interfaces between score and turn initiates and terminates
+*  turns.
+*
+*   object dice = contained within the turn loop system.
+*   object game_score = the score object, contained here for data control
+*
+*   getters and setters, used to refrence the game display
+*   check game end = if end game returns a true goes throug the game end process
+*/
+class gameState
+{
 
+};
 
 
 /* Contains all of the score category values, a boolean if they are played
@@ -118,12 +131,84 @@ class dice
 *  zero (category) = attempts to zero a category, checks if allready filled calls update score
 *  end_game = if all 13 boxes checked, calculates bonuses and calls update score
 *  getters for all peices
-*
+*/
 class score
 {
+    private:
+        int score_values[13];
+        bool score_played[13];
+        int total_score;
+        bool upper_bonus;
+        int yhatzee_bonus;
+        //bool yhatzee_bonus[13]; just make an exception to yhatzee scoring and run total of yhatzee bonus
 
+    public:
+        score()
+        {
+            for (int i = 0; i < 13; i++)
+            {
+                this->score_values[i] = 0;
+                this->score_played[i] = false;
+            }
+            this->total_score = 0;
+            this->upper_bonus = false;
+            this->yhatzee_bonus = 0;
+        }
+        //getters
+        vector<bool> getScorePlayed()
+        {
+            return { this->score_played[0],this->score_played[1],this->score_played[2] ,this->score_played[3], 
+                this->score_played[4], this->score_played[5], this->score_played[6], this->score_played[7],
+            this->score_played[8], this->score_played[9] , this->score_played[10] , this->score_played[11],
+            this->score_played[12]};
+        }
+        vector<int> getDiceVal()
+        {
+            return { this->score_values[0],this->score_values[1],this->score_values[2] ,this->score_values[3],
+                this->score_values[4], this->score_values[5], this->score_values[6], this->score_values[7],
+            this->score_values[8], this->score_values[9] , this->score_values[10] , this->score_values[11],
+            this->score_values[12] };
+        }
+        int getTotalScore()
+        {
+            return this->total_score;
+        }
+        bool getUpperBonus()
+        {
+            return this->upper_bonus;
+        }
+        //number of yhatzee bonus;
+        int getYhatzeeBonus()
+        {
+            return this->yhatzee_bonus;
+        }
+
+        //try to score basic yhatzee rules
+        bool tryScore(int score_index)
+
+        //try to cross off a score
+        //used nested if because behavior not unique per case
+        bool tryCross(int score_index)
+        {
+            
+            if (0 <= score_index && score_index <= 13)
+            {
+               
+                if (this->score_played[score_index])
+                {
+                    return false;
+                }
+                else
+                {
+                    this->score_played[score_index] = false;
+                    this->score_values[score_index] = 0;
+                    return true;
+                }
+            }
+            return false;
+        }
 };
-*/
+
 
 
 /* Runs the game, ends a session, ends the application, can generate a new
