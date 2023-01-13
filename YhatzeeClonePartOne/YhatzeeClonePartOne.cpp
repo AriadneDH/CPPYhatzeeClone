@@ -142,6 +142,15 @@ class score
         int yhatzee_bonus;
         //bool yhatzee_bonus[13]; just make an exception to yhatzee scoring and run total of yhatzee bonus
 
+        //cuts repeated code down
+        bool scoreTaken(int score_index)
+        {
+            if (this->score_played[score_index])
+            {
+                return true;
+            }
+            return false;
+        }
     public:
         score()
         {
@@ -184,28 +193,143 @@ class score
         }
 
         //try to score basic yhatzee rules
-        bool tryScore(int score_index)
+        bool tryScore(int score_index, vector<int> dice_values)
+        {
+            if (0 > score_index || score_index > 12)
+            {
+                return false;
+            }
+            switch (score_index)
+            {
+                //first six count the number of respectiv num in, then multiply value, if it is none then easy distinction.
+                case 0:
+                {
+                    int likenum_count = 0;
+                    if (scoreTaken(score_index))
+                    {
+                        return false;
+                    }
+                    for (int& die_val: dice_values)
+                    {
+                        if(die_val == 1)
+                        {
+                            likenum_count++;
+                        }
+                    }
+                    if (likenum_count == 0)
+                    {
+                        return false;
+                    }
+                    this->score_values[score_index] = (likenum_count * 1);
+                    this->score_played[score_index] = true;
+                    return true;
+                }
+                case 1:
+                {
+                    int likenum_count = 0;
+                    if (scoreTaken(score_index))
+                    {
+                        return false;
+                    }
+                    for (int& die_val: dice_values)
+                    {
+                        if (die_val == 2)
+                        {
+                            likenum_count++;
+                        }
+                    }
+                    if (likenum_count == 0)
+                    {
+                        return false;
+                    }
+                    this->score_values[score_index] = (likenum_count * 2);
+                    this->score_played[score_index] = true;
+                    return true;
+
+                }
+                case 2:
+                {
+                    int likenum_count = 0;
+                    if (scoreTaken(score_index))
+                    {
+                        return false;
+                    }
+                    for (int& die_val: dice_values)
+                    {
+                        if (die_val == 3)
+                        {
+                            likenum_count++;
+                        }
+                    }
+                    if (likenum_count == 0)
+                    {
+                        return false;
+                    }
+                    this->score_values[score_index] = (likenum_count * 3);
+                    this->score_played[score_index] = true;
+                    return true;
+
+                }
+                case 3:
+                {
+
+                }
+                case 4:
+                {
+
+                }
+                case 5:
+                {
+
+                }
+                case 6:
+                {
+
+                }
+                case 7:
+                {
+
+                }
+                case 8:
+                {
+
+                }
+                case 9:
+                {
+
+                }
+                case 10:
+                {
+
+                }
+                case 11:
+                {
+
+                }
+                case 12:
+                {
+
+                }
+            }
+            return false;
+        }
 
         //try to cross off a score
         //used nested if because behavior not unique per case
         bool tryCross(int score_index)
         {
             
-            if (0 <= score_index && score_index <= 13)
+            if (0 > score_index || score_index > 12)
             {
-               
-                if (this->score_played[score_index])
-                {
-                    return false;
-                }
-                else
-                {
-                    this->score_played[score_index] = false;
-                    this->score_values[score_index] = 0;
-                    return true;
-                }
+                return false;   
             }
-            return false;
+            if (scoreTaken(score_index))
+            {
+                return false;
+            }
+            this->score_played[score_index] = true;
+            this->score_values[score_index] = 0;
+            return true;
         }
 };
 
@@ -234,6 +358,21 @@ int runYhatzee()
     bool var5 = my_dice.keepDie(6);
     vector<bool> die_keep = my_dice.getDiceKeep();
     vector<int> die_val = my_dice.getDiceVal();*/
+    dice my_dice = dice();
+    score my_score = score();
+    my_dice.tryRoll();
+    
+    vector<int> test_dice = { 2, 2, 2, 2, 1 };
+    //test cross
+   bool t1 = my_score.tryCross(12);
+    //try false cross
+   bool t2 = my_score.tryCross(12);
+    //try false play
+   vector<int> diceval = my_dice.getDiceVal();
+   bool t3 = my_score.tryScore(0, diceval);
+    //try play
+   bool t4 = my_score.tryScore(1, test_dice);
+
     return 1;
 }
 /* cleans and writes to screen to function as a game interface
