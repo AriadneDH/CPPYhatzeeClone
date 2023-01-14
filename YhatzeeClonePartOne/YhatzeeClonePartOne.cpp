@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <algorithm>
 
 #include <time.h>
 #include <vector>
@@ -205,7 +206,29 @@ class score
             return false;
         }
         //function for the two straights
-        bool 
+        //find lowest value, count consecutive +1 increases
+        //attempt 2x for target lenght of 
+        bool checkStraight(vector<int> dice_values, int target_length)
+        {
+            int straight_length = 1;
+            sort(dice_values.begin(), dice_values.end());
+            for (int i = 0; i < 4; i++)
+            {
+                if (dice_values[i] + 1 == dice_values[i + ])
+                {
+                    straight_length++;
+                }
+                else
+                {
+                    straight_length = 1;
+                }
+                if (straight_length == target_length)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
     public:
         score()
@@ -227,7 +250,7 @@ class score
             this->score_played[8], this->score_played[9] , this->score_played[10] , this->score_played[11],
             this->score_played[12]};
         }
-        vector<int> getDiceVal()
+        vector<int> getScoreValues()
         {
             return { this->score_values[0],this->score_values[1],this->score_values[2] ,this->score_values[3],
                 this->score_values[4], this->score_values[5], this->score_values[6], this->score_values[7],
@@ -236,6 +259,16 @@ class score
         }
         int getTotalScore()
         {
+            int running_total = 0;
+            for (int score : this->score_values)
+            {
+                running_total += score;
+            }
+            if (this->upper_bonus)
+            {
+                running_total += 35;
+            }
+            this->total_score = running_total;
             return this->total_score;
         }
         bool getUpperBonus()
@@ -271,6 +304,16 @@ class score
                 }
                 this->score_values[score_index] = (likenum_count * (score_index + 1));
                 this->score_played[score_index] = true;
+                //check if upper bonus reached
+                int upper_total = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    upper_total += this->score_values[i];
+                }
+                if (upper_total >= 63 && this->upper_bonus == false)
+                {
+                    this->upper_bonus = true;
+                }
                 return true;
             }
             switch (score_index)
@@ -327,10 +370,24 @@ class score
                 }
                 case 9:
                 {
+                    if (checkStraight(dice_values, 4))
+                    {
+                        this->score_values[score_index] = 30;
+                        this->score_played[score_index] = true;
+                        return true;
+                    }
+                    return false;
 
                 }
-                case 10:
+                case 10: 
                 {
+                    if (checkStraight(dice_values, 5))
+                    {
+                        this->score_values[score_index] = 40;
+                        this->score_played[score_index] = true;
+                        return true;
+                    }
+                    return false;
 
                 }
                 //Yhatzee
