@@ -151,6 +151,62 @@ class score
             }
             return false;
         }
+        //function for bottom score types
+        //2 3 4 and 5 of a kind, if at any point
+        bool countLikeVal(vector<int> dice_values, int numto_count)
+        {
+            int likenum_count = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (i != 0)
+                {
+                    if (dice_values[i] == dice_values[(i - 1)])
+                    {
+                        continue;
+                    }
+                    for (int& dice_val : dice_values)
+                    {
+                        if (dice_val == dice_values[i])
+                        {
+                            likenum_count++;
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    for (int& dice_val : dice_values)
+                    {
+                        if (dice_val == dice_values[i])
+                        {
+                            likenum_count++;
+                        }
+                        //when yahtzee if any not equal simply exit
+                        else if (numto_count == 5)
+                        {
+                            return false;
+                        }
+
+                    }
+                }
+                //for all if it has less than num to count then go again
+                //for full house use, if it has more than two for the two check continue
+                if (likenum_count < numto_count || (numto_count == 2 && likenum_count != 2))
+                {
+                    likenum_count = 0;
+                    continue;
+                }
+                
+                //has same or more than req num of num
+                return true;
+            }
+            //no instances of specified count
+            return false;
+        }
+        //function for the two straights
+        bool 
+
     public:
         score()
         {
@@ -187,200 +243,45 @@ class score
             return this->upper_bonus;
         }
         
-
+        //mutators
         //try to score basic yhatzee rules
         bool tryScore(int score_index, vector<int> dice_values)
         {
-            if (0 > score_index || score_index > 12)
+            if ((0 > score_index || score_index > 12) || scoreTaken(score_index))
             {
                 return false;
             }
+            
+            //first 6 are identical
+            //not realy complex enough to deserve a function though
+            if (score_index < 6)
+            {
+                int likenum_count = 0;
+                
+                for (int& die_val : dice_values)
+                {
+                    if (die_val == (score_index + 1))
+                    {
+                        likenum_count++;
+                    }
+                }
+                if (likenum_count == 0)
+                {
+                    return false;
+                }
+                this->score_values[score_index] = (likenum_count * (score_index + 1));
+                this->score_played[score_index] = true;
+                return true;
+            }
             switch (score_index)
             {
-                //first six count the number of respectiv num in, then multiply value, if it is none then easy distinction.
-                case 0:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val: dice_values)
-                    {
-                        if(die_val == 1)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 1);
-                    this->score_played[score_index] = true;
-                    return true;
-                }
-                case 1:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val: dice_values)
-                    {
-                        if (die_val == 2)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 2);
-                    this->score_played[score_index] = true;
-                    return true;
-
-                }
-                case 2:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val: dice_values)
-                    {
-                        if (die_val == 3)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 3);
-                    this->score_played[score_index] = true;
-                    return true;
-
-                }
-                case 3:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val : dice_values)
-                    {
-                        if (die_val == 4)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 4);
-                    this->score_played[score_index] = true;
-                    return true;
-
-                }
-                case 4:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val : dice_values)
-                    {
-                        if (die_val == 5)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 5);
-                    this->score_played[score_index] = true;
-                    return true;
-
-                }
-                case 5:
-                {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
-                    {
-                        return false;
-                    }
-                    for (int& die_val : dice_values)
-                    {
-                        if (die_val == 6)
-                        {
-                            likenum_count++;
-                        }
-                    }
-                    if (likenum_count == 0)
-                    {
-                        return false;
-                    }
-                    this->score_values[score_index] = (likenum_count * 6);
-                    this->score_played[score_index] = true;
-                    return true;
-
-                }
+                //while 3, 4, yhatzee, and full house could be encapsulated in one if,
+                //I would still have to do a conditional to check which one, only slightly decresing repeted code.
                 //3of a kind
                 case 6:
                 {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
+                    if (countLikeVal(dice_values, 3))
                     {
-                        return false;
-                    }
-                    //go through num, if not index 0, compare to last if same break
-                    //because the last one did not have specified amount. compare to all going forward
-                    //if the likenum_count hits amount score
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (i != 0)
-                        {
-                            if (dice_values[i] == dice_values[(i - 1)])
-                            {
-                                continue;
-                            }
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-
-                            }
-
-                        }
-                        else
-                        {
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-                                
-                            }
-                        }
-                        if (likenum_count < 3)
-                        {
-                            likenum_count = 0;
-                            continue;
-                        }
-                        //score
                         int added_dice = 0;
                         for (int& dice_val : dice_values)
                         {
@@ -396,49 +297,8 @@ class score
                 //4 of a kind
                 case 7:
                 {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
+                    if (countLikeVal(dice_values, 4))
                     {
-                        return false;
-                    }
-                    //go through num, if not index 0, compare to last if same break
-                    //because the last one did not have specified amount. compare to all going forward
-                    //if the likenum_count hits amount score
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (i != 0)
-                        {
-                            if (dice_values[i] == dice_values[(i - 1)])
-                            {
-                                continue;
-                            }
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-
-                            }
-
-                        }
-                        else
-                        {
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-
-                            }
-                        }
-                        if (likenum_count < 4)
-                        {
-                            likenum_count = 0;
-                            continue;
-                        }
-                        //score
                         int added_dice = 0;
                         for (int& dice_val : dice_values)
                         {
@@ -452,64 +312,17 @@ class score
 
                 }
                 //full house
+                // exact same just recurses twice
+                return false;
                 case 8:
                 {
-                    int likenum_count = 0;
-                    if (scoreTaken(score_index))
+                    if (countLikeVal(dice_values, 2) && countLikeVal(dice_values, 3))
                     {
-                        return false;
+                        this->score_values[score_index] = 25;
+                        this->score_played[score_index] = true;
+                        return true;
                     }
-                    bool three_kind = false;
-                    bool two_kind = false;
-
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (i != 0)
-                        {
-                            if (dice_values[i] == dice_values[(i - 1)])
-                            {
-                                continue;
-                            }
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-
-                            }
-
-                        }
-                        else
-                        {
-                            for (int& dice_val : dice_values)
-                            {
-                                if (dice_val == dice_values[i])
-                                {
-                                    likenum_count++;
-                                }
-
-                            }
-                        }
-                        if (likenum_count == 3)
-                        {
-                            three_kind = true;
-                            likenum_count = 0;
-                            
-                        }
-                        else if (likenum_count == 2)
-                        {
-                            two_kind = true;
-                            likenum_count = 0;
-                        }
-                        //score
-                        if (two_kind && three_kind)
-                        {
-                            this->score_values[score_index] = 25;
-                            this->score_played[score_index] = true;
-                            return true;
-                        }
-                    }
+                    
                     return false;
                 }
                 case 9:
@@ -520,14 +333,34 @@ class score
                 {
 
                 }
+                //Yhatzee
                 case 11:
                 {
+                    if (countLikeVal(dice_values, 5))
+                    {
+                        
+                        this->score_values[score_index] = 50;
+                        this->score_played[score_index] = true;
+                        return true;
+                    }
+                    return false;
 
                 }
+                //chance
                 case 12:
                 {
-
+                    int added_dice = 0;
+                    for (int& dice_val : dice_values)
+                    {
+                        added_dice += dice_val;
+                    }
+                    this->score_values[score_index] = added_dice;
+                    this->score_played[score_index] = true;
+                    return true;
                 }
+                default:
+                    break;
+                    
             }
             return false;
         }
