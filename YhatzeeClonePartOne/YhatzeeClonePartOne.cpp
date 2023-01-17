@@ -43,13 +43,13 @@ class dice
             srand(time(NULL));
             for (int i = 0; i < 5; i++)
             {
-                if (dice_keep[i])
+                if (this->dice_keep[i])
                 {
                     //more efficient placement instead of another loop
-                    dice_keep[i] = false;
+                    this->dice_keep[i] = false;
                     continue;
                 }
-                dice_values[i] = (rand() % 6) + 1;
+                this->dice_values[i] = (rand() % 6) + 1;
             }
             
         }
@@ -58,7 +58,7 @@ class dice
         //only constructor, does one roll
         dice()
         {
-            roll_count = 0;
+            this->roll_count = 0;
             rollDice();
         }
         //pass index of the die to keep or not, 0-4 only, false signals invalid input
@@ -66,13 +66,13 @@ class dice
         {
             if (0 <= die_index && die_index <= 4)
             {
-                if (dice_keep[die_index])
+                if (this->dice_keep[die_index])
                 {
-                    dice_keep[die_index] = false;
+                    this->dice_keep[die_index] = false;
                 }
                 else
                 {
-                    dice_keep[die_index] = true;
+                    this->dice_keep[die_index] = true;
                 }
                 return true;
             }
@@ -81,13 +81,24 @@ class dice
         //tries roll, returns false if no rolls left
         bool tryRoll()
         {
-            if (roll_count < 2)
+            if (this->roll_count < 2)
             {
                 rollDice();
-                roll_count++;
+                this->roll_count++;
                 return true;
             }
             return false;
+        }
+        //Resets the die for the next turn
+        void nextTurn()
+        {
+            this->roll_count = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                this->dice_keep = false;
+            }
+            rollDice();
+
         }
         //getters
         vector<bool> getDiceKeep()
@@ -109,6 +120,7 @@ class dice
 *  created by the run game fucntion. interfaces between score and turn initiates and terminates
 *  turns.
 *
+*   String player_name.
 *   object dice = contained within the turn loop system.
 *   object game_score = the score object, contained here for data control
 *
@@ -117,6 +129,11 @@ class dice
 */
 class gameState
 {
+    private:
+        string player_name;
+
+
+    public:
 
 };
 
