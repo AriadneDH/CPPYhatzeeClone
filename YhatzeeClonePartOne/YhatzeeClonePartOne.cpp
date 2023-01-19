@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include <time.h>
+#include <array>
 #include <vector>
 #include <cstdlib>
 using namespace std;
@@ -37,6 +38,8 @@ class dice
          *  to be more clean, multiple calls, simply returns random num.
          *  return int the new random val,
          *  moved to the dice object
+         * 
+         *  update to a diffrent method of random whenever implementing the final version
          */
         void rollDice()
         {
@@ -79,6 +82,7 @@ class dice
             return false;
         }
         //tries roll, returns false if no rolls left
+        
         bool tryRoll()
         {
             if (this->roll_count < 2)
@@ -115,44 +119,6 @@ class dice
         }
         
 };
-
-/* Contains the turn object and score object, refrences the print screen function.
-*  created by the run game fucntion. interfaces between score and turn initiates and terminates
-*  turns.
-*
-*   String player_name.
-*   object dice = contained within the turn loop system.
-*   object game_score = the score object, contained here for data control
-*
-*   getters and setters, used to refrence the game display
-*   check game end = if end game returns a true goes throug the game end process
-*/
-class gameState
-{
-    private:
-        string player_name;
-        dice dice_set;
-        score game_score;
-
-
-    public:
-        gameState()
-        {
-            this->player_name = "unnamed_user";
-            this->dice_set = dice();
-            this->game_score = score();
-
-        }
-        gameState(string player_name)
-        {
-            this->player_name = player_name;
-            this->dice_set = dice();
-            this->game_score = score();
-
-        }
-
-};
-
 
 /* Contains all of the score category values, a boolean if they are played
 *  and the score value once played, is called to update and refrence score data.
@@ -472,6 +438,119 @@ class score
             this->score_played[score_index] = true;
             this->score_values[score_index] = 0;
             return true;
+        }
+};
+/* Contains the turn object and score object, refrences the print screen function.
+*  created by the run game fucntion. interfaces between score and turn initiates and terminates
+*  turns.
+*
+*   String player_name.
+*   object dice = contained within the turn loop system.
+*   object game_score = the score object, contained here for data control
+*
+*   getters and setters, used to refrence the game display
+*   check game end = if end game returns a true goes throug the game end process
+*/
+class gameState
+{
+    private:
+        string player_name;
+        dice dice_set;
+        score game_score;
+
+
+    public:
+        gameState()
+        {
+            this->player_name = "unnamed_user";
+            this->dice_set = dice();
+            this->game_score = score();
+
+        }
+        gameState(string player_name)
+        {
+            this->player_name = player_name;
+            this->dice_set = dice();
+            this->game_score = score();
+
+        }
+        /* Getter methods for the diffrent data peices.
+        *  for the objects they grab diffrent parts for display
+        *  this abstraction is done so that a function can have
+        *  access to getting the data peices without having acess
+        *  to the interaction function calls
+        */
+
+        //return the dice values
+        std::array<int, 5> getDiceVals()
+        {
+            std::array<int, 5> dice_vals;
+            //direct copy later
+            std::vector<int> dice_copy = this->dice_set.getDiceVal();
+            for (int i = 0; i < 5; i++)
+            {
+                dice_vals[i] = dice_copy[i];
+            }
+            return dice_vals;
+        }
+
+        //return the saved dice
+        std::array<bool, 5> getSavedDice()
+        {
+            std::array<bool, 5> dice_kept;
+            //direct copy later
+            std::vector<bool> dice_copy = this->dice_set.getDiceKeep();
+            for (int i = 0; i < 5; i++)
+            {
+                dice_kept[i] = dice_copy[i];
+            }
+            return dice_kept;
+        }
+
+
+            //return the score values
+        std::array<int, 13> getScoreVals()
+        {
+            std::array<int, 13> score_vals;
+            //direct copy later
+            std::vector<int> score_copy = this->game_score.getScoreValues();
+            for (int i = 0; i < 13; i++)
+            {
+                score_vals[i] = score_copy[i];
+            }
+            return score_vals;
+        }
+            //return the taken scores
+        std::array<bool, 13> getTakenScores()
+        {
+            std::array<bool, 13> taken_scores;
+            //direct copy later
+            std::vector<bool> score_copy = this->game_score.getScorePlayed();
+            for (int i = 0; i < 13; i++)
+            {
+                taken_scores[i] = score_copy[i];
+            }
+            return taken_scores;
+        }
+            //return the roll count
+        int getRollCount()
+        {
+            return this->dice_set.getRollCount();
+        }
+
+            //return the total scores
+        int getTotalScore()
+        {
+            return this->game_score.getTotalScore();
+        }
+            //return the top bonus
+        bool getUpperBonus()
+        {
+            return this->game_score.getUpperBonus();
+        }
+        std::string& getPlayerName()
+        {
+            return this->player_name;
         }
 };
 
