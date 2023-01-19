@@ -440,7 +440,7 @@ class score
             return true;
         }
 };
-/* Contains the turn object and score object, refrences the print screen function.
+/* Contains the dice object and score object, 
 *  created by the run game fucntion. interfaces between score and turn initiates and terminates
 *  turns.
 *
@@ -457,7 +457,19 @@ class gameState
         string player_name;
         dice dice_set;
         score game_score;
+       
+        //attempt a score
+        bool scoreCross(int box_choice)
+        {
+            vector<int> dice_vals = this->dice_set.getDiceVal();
+            return this->game_score.tryScore(box_choice, dice_vals);
 
+        }
+        //attempt a cross
+        bool scorePlay(int box_choice)
+        {
+            return this->game_score.tryCross(box_choice);
+        }
 
     public:
         gameState()
@@ -474,6 +486,66 @@ class gameState
             this->game_score = score();
 
         }
+        /* Game interaction methods
+        *  used for attempts to do specific
+        *  interactions with or between objects.
+        *  most return bool to show proper interaction
+        * 
+        *  takes the inputs, calls appropriate methods
+        *  overloads for the current implementation
+        */
+
+        //dice interactions
+        bool diceInteract()
+        {
+            bool roll_check = this->dice_set.tryRoll();
+            return roll_check;
+        }
+        bool diceInteract(int die_index)
+        {
+            bool valid_index = this->dice_set.keepDie(die_index);
+            return valid_index;
+        }
+
+        //score interactions
+        // method true = play false = cross
+        // return false = invalid choice
+        bool scoreInteract(bool method_choice, int box_choice)
+        {
+            bool valid_interaction = false;
+            if (method_choice)
+            {
+                valid_interaction = scorePlay(box_choice);
+            }
+            else
+            {
+                valid_interaction = scoreCross(box_choice);
+            }
+            
+            if (valid_interaction)
+            {
+                this->dice_set.nextTurn();
+            }
+            return valid_interaction;
+        }
+        //checks all the boxes are played, returns early if one is false
+        bool attemptGameEnd()
+        {
+            bool valid_end = false;
+            vector<bool> scores_played = this->game_score.getScorePlayed();
+            for (int i = 0; i < 13; i++)
+            {
+                if (scores_played[i] == false)
+                {
+                    return valid_end;
+                }
+            }
+            valid_end = true;
+            return valid_end;
+        }
+        
+
+
         /* Getter methods for the diffrent data peices.
         *  for the objects they grab diffrent parts for display
         *  this abstraction is done so that a function can have
@@ -552,6 +624,8 @@ class gameState
         {
             return this->player_name;
         }
+
+
 };
 
 
@@ -594,6 +668,10 @@ int runYhatzee()
     //try play
    bool t4 = my_score.tryScore(1, test_dice);
    */
+
+    // going to run a full game test case
+
+
     return 1;
 }
 /* cleans and writes to screen to function as a game interface
