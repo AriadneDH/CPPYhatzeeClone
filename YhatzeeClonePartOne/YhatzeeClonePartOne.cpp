@@ -95,7 +95,7 @@ class dice
             this->roll_count = 0;
             for (int i = 0; i < 5; i++)
             {
-                this->dice_keep = false;
+                this->dice_keep[i] = false;
             }
             rollDice();
 
@@ -131,9 +131,25 @@ class gameState
 {
     private:
         string player_name;
+        dice dice_set;
+        score game_score;
 
 
     public:
+        gameState()
+        {
+            this->player_name = "unnamed_user";
+            this->dice_set = dice();
+            this->game_score = score();
+
+        }
+        gameState(string player_name)
+        {
+            this->player_name = player_name;
+            this->dice_set = dice();
+            this->game_score = score();
+
+        }
 
 };
 
@@ -231,7 +247,7 @@ class score
             sort(dice_values.begin(), dice_values.end());
             for (int i = 0; i < 4; i++)
             {
-                if (dice_values[i] + 1 == dice_values[i + ])
+                if (dice_values[i] + 1 == dice_values[i + 1])
                 {
                     straight_length++;
                 }
@@ -239,6 +255,7 @@ class score
                 {
                     straight_length = 1;
                 }
+
                 if (straight_length == target_length)
                 {
                     return true;
