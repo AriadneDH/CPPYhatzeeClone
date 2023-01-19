@@ -628,65 +628,144 @@ class gameState
 
 };
 
+/* write up the screen print for use in data display
+* passed a gamestate object 
+* 
+*/
+void screenPrint(gameState player_object)
+{
+    std::array<int, 13> score_vals = player_object.getScoreVals();
+    std::array<bool, 13> score_played = player_object.getTakenScores();
 
+    std::array<int,5> dice_vals = player_object.getDiceVals();
+    std::array<bool,5> saved_dice = player_object.getSavedDice();
 
+    int roll_count = player_object.getRollCount() + 1;
+    int total_score = player_object.getTotalScore();
+    bool upper_bonus = player_object.getUpperBonus();
+    string player_name = player_object.getPlayerName();
+
+    cout << player_name << endl;
+    //scores
+    for(int i = 0; i < 13; i++)
+    {
+        cout << score_vals[i] << ", ";
+    }
+    if (upper_bonus)
+    {
+        cout << "T" << endl;
+    }
+    else
+    {
+        cout << "F" << endl;
+    }
+    for (int i = 0; i < 13; i++)
+    {
+        if (score_played[i])
+        {
+            cout << "T, ";
+        }
+        else
+        {
+            cout << "F, ";
+        }
+    }
+    cout << endl;
+    //dice
+    for (int i = 0; i < 5; i++)
+    {
+        cout << dice_vals[i] << ", ";
+    }
+    cout << roll_count << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        if (saved_dice[i])
+        {
+            cout << "T, ";
+        }
+        else
+        {
+            cout << "F, ";
+        }
+    }
+    cout << endl;
+}
 /* Runs the game, ends a session, ends the application, can generate a new
 *  game instance. passes different ints to main for close based on different end cases
 *  also interprates and controlls user input to call appropriate methods, meat and potatos of calls.
-* 
+*
 *  0 regular end
 *  1 crash
-* 
+*
 *  Object gamestate = current gamestate
-*  
+*
 *  new_game = creates a new game instance
 *  end_game = ends the current game instance
 *  quit_app = closes the application
 */
 int runYhatzee()
 {
-   /* dice my_dice = dice();
-    bool var1 = my_dice.tryRoll();
-    bool var2 = my_dice.keepDie(1);
-    bool var3 = my_dice.keepDie(2);
-    bool var4 = my_dice.tryRoll();
-    bool var5 = my_dice.keepDie(6);
-    vector<bool> die_keep = my_dice.getDiceKeep();
-    vector<int> die_val = my_dice.getDiceVal();
-    dice my_dice = dice();
-    score my_score = score();
-    my_dice.tryRoll();
-    
-    vector<int> test_dice = { 2, 2, 2, 2, 1 };
-    //test cross
-   bool t1 = my_score.tryCross(12);
-    //try false cross
-   bool t2 = my_score.tryCross(12);
-    //try false play
-   vector<int> diceval = my_dice.getDiceVal();
-   bool t3 = my_score.tryScore(0, diceval);
-    //try play
-   bool t4 = my_score.tryScore(1, test_dice);
-   */
+    /* dice my_dice = dice();
+     bool var1 = my_dice.tryRoll();
+     bool var2 = my_dice.keepDie(1);
+     bool var3 = my_dice.keepDie(2);
+     bool var4 = my_dice.tryRoll();
+     bool var5 = my_dice.keepDie(6);
+     vector<bool> die_keep = my_dice.getDiceKeep();
+     vector<int> die_val = my_dice.getDiceVal();
+     dice my_dice = dice();
+     score my_score = score();
+     my_dice.tryRoll();
+
+     vector<int> test_dice = { 2, 2, 2, 2, 1 };
+     //test cross
+    bool t1 = my_score.tryCross(12);
+     //try false cross
+    bool t2 = my_score.tryCross(12);
+     //try false play
+    vector<int> diceval = my_dice.getDiceVal();
+    bool t3 = my_score.tryScore(0, diceval);
+     //try play
+    bool t4 = my_score.tryScore(1, test_dice);
+    */
 
     // going to run a full game test case
+    gameState new_player = gameState("Ari");
+    /*unintuitive parameters
+    * for the calls, as the point is
+    * just testing
+    *
+    * dice interactions
+    * 1 roll
+    * 2 keep index 0
+    * 3 keep index 1
+    * 4 keep index 2
+    * 5 keep index 3
+    * 6 keep index 4
+    * score interactions
+    * 7 play index 0, 8 play index 1, 9 play index 2
+    * 10 play index 3, 11 play index 4, 12 play index 5
+    * 13 play index 6, 14 play index 7, 15 play index 8
+    * 16 play index 9, 17 play index 10, 18 play index 11
+    * 19 play index 12
+    *
+    * 20 cross index 0, 21 cross index 1, 22 cross index 2
+    * 23 cross index 3, 24 cross index 4, 25 cross index 5
+    * 26 cross index 6, 27 cross index 7, 28 cross index 8
+    * 29 cross index 9, 30 cross index 10, 31 cross index 11
+    * 32 cross index 12
+    *
+    * gamestate exclusive
+    * 33 try end.
+    *
+    *
+    while (new_player.attemptGameEnd() == false)
+    {
 
-
+    }*/
+    screenPrint(new_player);
     return 1;
 }
-/* cleans and writes to screen to function as a game interface
-*  todo specs for this fun, later priority
-*
-private -- screenPrint(-different peices of data to pass for screen printing-)
-*/
-/* More dummed down print metod for in-development testing
-*  todo, specs of method
-*
-int testPrint(-associated data, and different print cases for use in testing - )
-{
-
-}
-*/
 /* Main method, initiates game run
 *  prints difrent return values based on
 *  how game ended
