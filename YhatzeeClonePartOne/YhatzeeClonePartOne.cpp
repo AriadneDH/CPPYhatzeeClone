@@ -459,14 +459,14 @@ class gameState
         score game_score;
        
         //attempt a score
-        bool scoreCross(int box_choice)
+        bool scorePlay(int box_choice)
         {
             vector<int> dice_vals = this->dice_set.getDiceVal();
             return this->game_score.tryScore(box_choice, dice_vals);
 
         }
         //attempt a cross
-        bool scorePlay(int box_choice)
+        bool scoreCross(int box_choice)
         {
             return this->game_score.tryCross(box_choice);
         }
@@ -756,13 +756,490 @@ int runYhatzee()
     * 32 cross index 12
     *
     * gamestate exclusive
-    * 33 try end.
+    * 
+    * 33 try end early.
+    * 
+    * //test early
+    * 34 try keep dice bellow index
+    * 35 try play above index
+    * 36 try cross above index
     *
-    *
+    * this wont be pretty
+    */
     while (new_player.attemptGameEnd() == false)
     {
+        screenPrint(new_player);
+        int choice = 0;
+        cin >> choice;
+        cout << endl;
+        //This goes agianst everything I do as a SE but it is just for logic/case testing
+        switch (choice)
+        {
+            //Just a repeated format that could be so much more efficient and secure in every way
+            case 1:
+            {
+                if(new_player.diceInteract())
+                { 
+                    cout << "Valid Selection" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection Roll Dice" << endl;
+                }
+                break;
+                
+            }
+            case 2:
+            {
+                if(new_player.diceInteract(0))
+                { 
+                    cout << "Valid Selection save dice 1" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection save dice 1" << endl;
+                }
+                break;
+                
+            }
+            case 3:
+            {
+                if (new_player.diceInteract(1))
+                {
+                    cout << "Valid Selection save dice 2" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection save dice 2" << endl;
+                }
+                break;
 
-    }*/
+            }
+            case 4:
+            {
+
+                if (new_player.diceInteract(2))
+                {
+                    cout << "Valid Selection save dice 3" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection save dice 3" << endl;
+                }
+                break;
+            }
+            case 5:
+            {
+
+                if (new_player.diceInteract(3))
+                {
+                    cout << "Valid Selection save dice 4" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection save dice 4" << endl;
+                }
+                break;
+            }
+            case 6:
+            {
+                if (new_player.diceInteract(4))
+                {
+                    cout << "Valid Selection save dice 5" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection save dice 5" << endl;
+                }
+                break;
+            }
+
+            case 7:
+            {
+                if (new_player.scoreInteract(true, 0))
+                {
+                    cout << "Valid Selection play score 1s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 1s" << endl;
+                }
+                break;
+
+            }
+            case 8:
+            {
+
+                if (new_player.scoreInteract(true, 1))
+                {
+                    cout << "Valid Selection play score 2s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 2s" << endl;
+                }
+                break;
+            }
+            case 9:
+            {
+
+                if (new_player.scoreInteract(true, 2))
+                {
+                    cout << "Valid Selection play score 3s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 3s" << endl;
+                }
+                break;
+            }
+            case 10:
+            {
+
+                if (new_player.scoreInteract(true, 3))
+                {
+                    cout << "Valid Selection play score 4s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 4s" << endl;
+                }
+                break;
+            }
+            case 11:
+            {
+
+                if (new_player.scoreInteract(true, 4))
+                {
+                    cout << "Valid Selection play score 5s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 5s" << endl;
+                }
+                break;
+            }
+            case 12:
+            {
+
+                if (new_player.scoreInteract(true, 5))
+                {
+                    cout << "Valid Selection play score 6s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 6s" << endl;
+                }
+                break;
+            }
+            case 13:
+            {
+
+                if (new_player.scoreInteract(true, 6))
+                {
+                    cout << "Valid Selection play score 3 of a kind" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 3 of a kind" << endl;
+                }
+                break;
+
+            }
+            case 14:
+            {
+                if (new_player.scoreInteract(true, 7))
+                {
+                    cout << "Valid Selection play score 4 of a kind" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score 4 of a kind" << endl;
+                }
+                break;
+            }
+            case 15:
+            {
+                if (new_player.scoreInteract(true, 8))
+                {
+                    cout << "Valid Selection play score full house" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score full house" << endl;
+                }
+                break;
+            }
+            case 16:
+            {
+                if (new_player.scoreInteract(true, 9))
+                {
+                    cout << "Valid Selection play score small straight" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score small straight" << endl;
+                }
+                break;
+            }
+            case 17:
+            {
+                if (new_player.scoreInteract(true, 10))
+                {
+                    cout << "Valid Selection play score large straight" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score large straight" << endl;
+                }
+                break;
+            }
+            case 18:
+            {
+                if (new_player.scoreInteract(true, 11))
+                {
+                    cout << "Valid Selection play score Yhatzee" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score Yhatzee" << endl;
+                }
+                break;
+            }
+            case 19:
+            {
+                if (new_player.scoreInteract(true, 12))
+                {
+                    cout << "Valid Selection play score Chance" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play score Chance" << endl;
+                }
+                break;
+            }
+            case 20:
+            {
+                if (new_player.scoreInteract(false, 0))
+                {
+                    cout << "Valid Selection cross score 1s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 1s" << endl;
+                }
+                break;
+
+            }
+            case 21:
+            {
+
+                if (new_player.scoreInteract(false, 1))
+                {
+                    cout << "Valid Selection cross score 2s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 2s" << endl;
+                }
+                break;
+            }
+            case 22:
+            {
+                if (new_player.scoreInteract(false, 2))
+                {
+                    cout << "Valid Selection cross score 3s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 3s" << endl;
+                }
+                break;
+            }
+            case 23:
+            {
+
+                if (new_player.scoreInteract(false, 3))
+                {
+                    cout << "Valid Selection cross score 4s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 4s" << endl;
+                }
+                break;
+            }
+            case 24:
+            {
+
+                if (new_player.scoreInteract(false, 4))
+                {
+                    cout << "Valid Selection cross score 5s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 5s" << endl;
+                }
+                break;
+            }
+            case 25:
+            {
+
+                if (new_player.scoreInteract(false, 5))
+                {
+                    cout << "Valid Selection cross score 6s" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 6s" << endl;
+                }
+                break;
+            }
+            case 26:
+            {
+
+                if (new_player.scoreInteract(false, 6))
+                {
+                    cout << "Valid Selection cross score 3 of a kind" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 3 of a kind" << endl;
+                }
+                break;
+
+            }
+            case 27:
+            {
+                if (new_player.scoreInteract(false, 7))
+                {
+                    cout << "Valid Selection cross score 4 of a kind" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score 4 of a kind" << endl;
+                }
+                break;
+            }
+            case 28:
+            {
+                if (new_player.scoreInteract(false, 8))
+                {
+                    cout << "Valid Selection cross score full house" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score full house" << endl;
+                }
+                break;
+            }
+            case 29:
+            {
+                if (new_player.scoreInteract(false, 9))
+                {
+                    cout << "Valid Selection cross score small straight" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score small straight" << endl;
+                }
+                break;
+            }
+            case 30:
+            {
+                if (new_player.scoreInteract(false, 10))
+                {
+                    cout << "Valid Selection cross score large straight" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score large straight" << endl;
+                }
+                break;
+            }
+            case 31:
+            {
+                if (new_player.scoreInteract(false, 11))
+                {
+                    cout << "Valid Selection cross score Yhatzee" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score Yhatzee" << endl;
+                }
+                break;
+            }
+            case 32:
+            {
+                if (new_player.scoreInteract(false, 12))
+                {
+                    cout << "Valid Selection cross score Chance" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection cross score Chance" << endl;
+                }
+                break;
+            }
+            case 33:
+            {
+                if (new_player.attemptGameEnd())
+                {
+                    cout << "Valid Selection end game" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection end game" << endl;
+                }
+                break;
+
+            }
+            case 34:
+            {
+                if (new_player.diceInteract(7))
+                {
+                    cout << "Valid Selection" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection" << endl;
+                }
+                break;
+
+            }
+            case 35:
+            {
+                if (new_player.scoreInteract(true, 14))
+                {
+                    cout << "Valid Selection play invalid" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play invalid" << endl;
+                }
+                break;
+
+            }
+            case 36:
+            {
+                if (new_player.scoreInteract(false, 15))
+                {
+                    cout << "Valid Selection cross invalid" << endl;
+                }
+                else
+                {
+                    cout << "Invalid Selection play invalid" << endl;
+                }
+                break;
+
+            }
+            
+        default:
+            break;
+        }
+
+
+    }
     screenPrint(new_player);
     return 1;
 }

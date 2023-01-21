@@ -1,0 +1,1161 @@
+Use case test run of dev Yhatzee test
+ dice interactions
+    * 1 roll
+    * 2 keep index 0
+    * 3 keep index 1
+    * 4 keep index 2
+    * 5 keep index 3
+    * 6 keep index 4
+    * score interactions
+    * 7 play index 0, 8 play index 1, 9 play index 2
+    * 10 play index 3, 11 play index 4, 12 play index 5
+    * 13 play index 6, 14 play index 7, 15 play index 8
+    * 16 play index 9, 17 play index 10, 18 play index 11
+    * 19 play index 12
+    *
+    * 20 cross index 0, 21 cross index 1, 22 cross index 2
+    * 23 cross index 3, 24 cross index 4, 25 cross index 5
+    * 26 cross index 6, 27 cross index 7, 28 cross index 8
+    * 29 cross index 9, 30 cross index 10, 31 cross index 11
+    * 32 cross index 12
+    *
+    * gamestate exclusive
+    * 
+    * 33 try end early.
+    * 
+    * //test early
+    * 34 try keep dice bellow index
+    * 35 try play above index
+    * 36 try cross above index
+    *
+    * this wont be pretty
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 1, 4, 6, 6, 1
+F, F, F, F, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 1, 4, 6, 6, 1
+F, F, F, F, T,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 1, 4, 6, 6, 1
+F, F, F, T, T,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 1, 4, 6, 6, 1
+T, F, F, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+T, F, F, F, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+T, F, F, F, T,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+T, F, F, T, T,
+
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+T, F, F, F, T,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 2, 1, 6, 6, 2
+T, F, F, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F
+F, F, F, F, F, F, F, F, F, F, F, F, F,
+5, 4, 4, 6, 6, 3
+F, F, F, F, F,
+19
+
+Valid Selection play score Chance
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 3, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 3, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 3, 1
+T, T, F, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 3, 1
+T, T, F, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 4, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 4, 2
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 4, 2
+T, T, F, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 5, 6, 4, 2
+T, T, F, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, F, F, F, F, F, F, F, T,
+6, 6, 2, 6, 6, 3
+F, F, F, F, F,
+12
+
+Valid Selection play score 6s
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+5, 4, 4, 2, 4, 1
+F, F, F, F, F,
+25
+
+Invalid Selection cross score 6s
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+5, 4, 4, 2, 4, 1
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+5, 4, 4, 2, 4, 1
+F, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+5, 4, 4, 2, 4, 1
+F, T, T, F, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+5, 4, 4, 2, 4, 1
+F, T, T, F, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+3, 4, 4, 3, 4, 2
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+3, 4, 4, 3, 4, 2
+F, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+3, 4, 4, 3, 4, 2
+F, T, T, F, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+3, 4, 4, 3, 4, 2
+F, T, T, F, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, F, F, T, F, F, F, F, F, F, T,
+2, 4, 4, 3, 4, 3
+F, F, F, F, F,
+10
+
+Valid Selection play score 4s
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 1, 1
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 1, 1
+F, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 1, 1
+F, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 1, 1
+F, T, T, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 6, 2
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 6, 2
+F, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 6, 2
+F, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+6, 6, 4, 3, 6, 2
+F, T, T, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+F, F, F, T, F, T, F, F, F, F, F, F, T,
+3, 6, 4, 3, 2, 3
+F, F, F, F, F,
+20
+
+Valid Selection cross score 1s
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+F, F, F, F, F,
+20
+
+Invalid Selection cross score 1s
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+T, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 1, 1
+T, T, T, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 2, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 2, 2
+T, F, F, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 4, 6, 5, 2, 2
+T, F, F, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 0, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, F, T, F, F, F, F, F, F, T,
+5, 2, 4, 5, 1, 3
+F, F, F, F, F,
+11
+
+Valid Selection play score 5s
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 6, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 6, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 6, 1
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 6, 1
+T, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 6, 1
+T, T, T, T, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 10, 24, 0, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, F, F, F, F, F, F, T,
+4, 4, 1, 1, 1, 2
+F, F, F, F, F,
+13
+
+Valid Selection play score 3 of a kind
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, T, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, T, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 1
+T, F, T, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+3, 6, 2, 3, 2, 2
+F, F, F, F, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 10, 24, 11, 0, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, F, F, F, F, F, T,
+6, 6, 1, 6, 6, 3
+F, F, F, F, F,
+14
+
+Valid Selection play score 4 of a kind
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 6, 5, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 6, 5, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 6, 5, 1
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 6, 5, 1
+T, T, T, F, F,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 2, 3, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 2, 3, 2
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 2, 3, 2
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 2, 3, 2
+T, T, T, F, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 2, 3, 2
+T, T, T, F, T,
+1
+
+Valid Selection
+Ari
+0, 0, 0, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, F, T, T, T, T, T, F, F, F, F, T,
+3, 3, 3, 5, 3, 3
+F, F, F, F, F,
+9
+
+Valid Selection play score 3s
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 1
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 1
+F, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 1
+F, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 1
+F, T, T, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 1
+F, T, T, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, T, F, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, T, F, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, T, F, T, T,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, T, T,
+33
+
+Invalid Selection end game
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, T, T,
+34
+
+Invalid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, T, T,
+35
+
+Invalid Selection play invalid
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, T, T,
+36
+
+Invalid Selection play invalid
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 5, 4, 1, 3, 2
+T, F, F, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 6, 2, 1, 3, 3
+F, F, F, F, F,
+15
+
+Invalid Selection play score full house
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 0, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, F, F, F, T,
+4, 6, 2, 1, 3, 3
+F, F, F, F, F,
+16
+
+Valid Selection play score small straight
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, F, T,
+4, 5, 2, 4, 6, 1
+F, F, F, F, F,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, F, T,
+3, 3, 1, 6, 5, 2
+F, F, F, F, F,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, F, T,
+3, 5, 1, 2, 5, 3
+F, F, F, F, F,
+31
+
+Valid Selection cross score Yhatzee
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, F, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, F, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, F, T, T, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, T, T, T, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, T, F, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 1, 4, 4, 1
+T, T, F, T, T,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 6, 4, 4, 2
+F, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+4, 2, 6, 4, 4, 2
+F, T, F, F, F,
+1
+
+Valid Selection
+Ari
+0, 0, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, F
+T, F, T, T, T, T, T, T, F, T, F, T, T,
+2, 2, 3, 6, 2, 3
+F, F, F, F, F,
+8
+
+Valid Selection play score 2s
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 3, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 3, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 3, 1
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 3, 1
+T, T, T, F, F,
+1
+
+Valid Selection
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 2, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 2, 2
+T, F, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 1, 3, 6, 2, 2
+T, F, T, F, F,
+1
+
+Valid Selection
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+1
+
+Invalid Selection Roll Dice
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+1
+
+Invalid Selection Roll Dice
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+1
+
+Invalid Selection Roll Dice
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+1
+
+Invalid Selection Roll Dice
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+7
+
+Invalid Selection play score 1s
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+7
+
+Invalid Selection play score 1s
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+8
+
+Invalid Selection play score 2s
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+8
+
+Invalid Selection play score 2s
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, F, T, F, T, T,
+2, 6, 3, 5, 6, 3
+F, F, F, F, F,
+28
+
+Valid Selection cross score full house
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, T, T, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, T, T, T, T,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, F, T, T, T,
+5
+
+Valid Selection save dice 4
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, F, T, F, T,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 6, 3, 1
+T, T, T, F, T,
+1
+
+Valid Selection
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+F, F, F, F, F,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, F, F, F, F,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, T, F, F, F,
+4
+
+Valid Selection save dice 3
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, T, T, F, F,
+5
+
+Valid Selection save dice 4
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, T, T, T, F,
+6
+
+Valid Selection save dice 5
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, T, T, T, T,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+F, T, T, T, T,
+2
+
+Valid Selection save dice 1
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, T, T, T, T,
+3
+
+Valid Selection save dice 2
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, F, T, T, T,
+4
+
+
+Valid Selection save dice 3
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 5, 5, 3, 2
+T, F, F, T, T,
+1
+
+Valid Selection
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, F, T, T,
+2, 6, 6, 5, 3, 3
+F, F, F, F, F,
+30
+
+Valid Selection cross score large straight
+Ari
+0, 6, 12, 12, 10, 24, 11, 25, 0, 30, 0, 0, 25, T
+T, T, T, T, T, T, T, T, T, T, T, T, T,
+5, 4, 5, 6, 6, 1
+F, F, F, F, F,
+
+C:\Users\bgebo\OneDrive\Documents\GitHub\CPPYhatzeeClone\YhatzeeClonePartOne\Debug\YhatzeeClonePartOne.exe (process 29248) exited with code 1.
+Press any key to close this window . . .
